@@ -1,6 +1,8 @@
 package com.springEco.Spring.Ecosystem.Relationships;
 
+import com.springEco.Spring.Ecosystem.Relationships.Beans.Car;
 import com.springEco.Spring.Ecosystem.Relationships.Beans.Person;
+import com.springEco.Spring.Ecosystem.Relationships.Beans.User;
 import com.springEco.Spring.Ecosystem.Relationships.Config.Config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,5 +17,11 @@ public class App {
         var person=context.getBean("person", Person.class);
         System.out.println(person.getName());
         System.out.println(person.getParrot());
+
+
+
+        var user1=context.getBean( User.class);
+        System.out.println(user1.getName());
+        System.out.println(user1.getCar().getName());
     }
 }
