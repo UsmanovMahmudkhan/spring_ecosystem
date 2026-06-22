@@ -2,16 +2,11 @@ package com.springEco.Spring.Ecosystem.Bean;
 
 import org.springframework.stereotype.Component;
 
-
-public class Parrot {
-
-    private String name;
+@Component
+public class Cat {
+    String name="Meow";
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

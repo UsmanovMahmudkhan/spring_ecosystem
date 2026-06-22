@@ -2,10 +2,12 @@ package com.springEco.Spring.Ecosystem.Config;
 
 import com.springEco.Spring.Ecosystem.Bean.Parrot;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
+@ComponentScan(basePackages = "com.springEco.Spring.Ecosystem.Bean")
 public class Config {
 
     @Bean(name="parrot1")
