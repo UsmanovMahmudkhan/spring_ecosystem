@@ -1,5 +1,7 @@
 package com.springEco.Spring.Ecosystem.Relationships.Beans;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Person {
     private  String name;
     private Parrot parrot;
