@@ -8,27 +8,26 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 public class Config {
 
-    @Bean
+    @Bean(name="parrot1")
     public Parrot parrot1(){
         var par1=new Parrot();
         par1.setName("kiki");
         return par1;
     }
 
-    @Bean
+    @Bean(name = "parrot2")
     public Parrot parrot2(){
         Parrot parrot=new Parrot();
         parrot.setName("parrot-2");
         return parrot;
     }
 
-    @Bean
+    @Bean(name = "parrot3")
     @Primary
     public Parrot parrot3(){
         Parrot parrot=new Parrot();
         parrot.setName("parrot-3");
         return parrot;
     }
-
 
 }
