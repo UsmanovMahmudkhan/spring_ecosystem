@@ -12,7 +12,6 @@ import java.util.function.Supplier;
 @SpringBootApplication(scanBasePackages = "com.springEco.Spring.Ecosystem.SpringContextPetAdoptionManager")
 public class App {
     public static void main(String[] args) {
-        SpringApplication.run(App.class,args);
 
         var context=new AnnotationConfigApplicationContext(Config.class);
         var report=context.getBean(AdoptionReportPrinter.class);
