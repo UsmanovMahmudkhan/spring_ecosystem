@@ -5,8 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 @SpringBootApplication(scanBasePackages = "com.springEco.Spring.Ecosystem.Aspects.Around")
 public class App {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
 
         var context=new AnnotationConfigApplicationContext(Config.class);
         var service=context.getBean(CommentService.class);

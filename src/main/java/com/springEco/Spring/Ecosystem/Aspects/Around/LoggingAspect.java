@@ -17,9 +17,13 @@ public class LoggingAspect {
 
     @Around("execution(* com.springEco.Spring.Ecosystem.Aspects.Around.*.*(..))")
     public Object  object(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        long start=System.currentTimeMillis();
         logger.info("Before: Aspect started");
         var result=proceedingJoinPoint.proceed();
         logger.info("After: Aspect finished");
+        long end=System.currentTimeMillis();
+
+        logger.info("Time taken to execute: "+(end-start));
         return result;
     }
 }

@@ -9,7 +9,8 @@ public class CommentService {
 
     private final Logger logger= Logger.getLogger(CommentService.class.getName());
 
-    public void publishComment(Comment comment){
+    public void publishComment(Comment comment) throws InterruptedException {
+        Thread.sleep(3000);
         logger.info( "Publishing text: "+comment.getText()+"\n Author: "+comment.getAuthor());
     }
 }
