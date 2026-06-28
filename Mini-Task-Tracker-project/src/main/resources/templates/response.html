@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Response</title>
+</head>
+<body>
+<h1><span th:text="${task.getDescription()}"></span> task is added and done!!</h1>
+<h2>ID: <span th:text="${task.getId()}"></span></h2>
+<h2>Status: <span th:text="${task.getStatus()}"></span></h2>
+<h2>Time: <span th:text="${task.getCreatedAt()}"></span></h2>
+</body>
+</html>
