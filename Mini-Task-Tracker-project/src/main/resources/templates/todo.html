@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos</title>
+</head>
+<body>
+<ul>
+  <li th:each="todos : ${todo}">
+    <span th:text="${todo}" style="font-size: 5rem; font-weight: bold;"></span>
+  </li>
+</ul>
+</body>
+</html>
