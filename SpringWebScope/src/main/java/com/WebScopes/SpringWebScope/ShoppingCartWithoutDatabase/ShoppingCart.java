@@ -1,4 +1,4 @@
-package com.WebScopes.SpringWebScope.RequestScope.ShoppingCartWithoutDatabase;
+package com.WebScopes.SpringWebScope.ShoppingCartWithoutDatabase;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;

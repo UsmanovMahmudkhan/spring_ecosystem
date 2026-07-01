@@ -1,4 +1,4 @@
-package com.WebScopes.SpringWebScope.RequestScope.ShoppingCartWithoutDatabase;
+package com.WebScopes.SpringWebScope.ShoppingCartWithoutDatabase;
 
 public class CartItem {
     private String productName;
