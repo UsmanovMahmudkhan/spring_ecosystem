@@ -1,6 +1,5 @@
-package com.WebScopes.SpringWebScope.RequestScope;
+package com.WebScopes.SpringWebScope.RequestScope.SearchFilterCleaner;
 
-import org.springframework.boot.Banner;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

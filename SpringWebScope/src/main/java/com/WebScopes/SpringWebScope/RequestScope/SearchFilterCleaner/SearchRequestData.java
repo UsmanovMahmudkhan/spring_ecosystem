@@ -1,4 +1,4 @@
-package com.WebScopes.SpringWebScope.RequestScope;
+package com.WebScopes.SpringWebScope.RequestScope.SearchFilterCleaner;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;

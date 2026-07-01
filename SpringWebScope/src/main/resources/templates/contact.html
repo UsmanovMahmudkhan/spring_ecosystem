@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+</head>
+<body>
+<h1>Name: <span th:text="${contact.getName()}"></span></h1>
+<br>
+<h1>Email: <span th:text="${contact.getEmail()}"></span></h1>
+<br>
+<h1>Message: <span th:text="${contact.getMessage()}"></span></h1>
+<br>
+<h1>Valid: <span th:text="${processor.isValid()}"></span></h1>
+<br>
+<h1>Errors: <span th:text="${processor.getError()}"></span></h1>
+
+</body>
+</html>
