@@ -10,11 +10,8 @@ import java.util.List;
 @SessionScope
 public class ShoppingCart {
 
-    private List<CartItem>cartItems;
+    private List<CartItem>cartItems=new ArrayList<>();
 
-    public ShoppingCart(List<CartItem> cartItems) {
-        this.cartItems = cartItems;
-    }
 
     public List<CartItem> getCartItems() {
         return cartItems;

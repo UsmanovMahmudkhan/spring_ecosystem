@@ -32,7 +32,7 @@ public class Controller {
     }
 
 
-    @PutMapping("/cart/remove")
+    @PostMapping("/cart/remove")
     public String remove(@RequestParam String name){
         for(CartItem item:cart.getCartItems()){
             if(name.equals(item.getProductName())){
@@ -44,15 +44,10 @@ public class Controller {
     }
 
 
-    @PutMapping("/clear")
+    @PostMapping("/cart/clear")
     public String clear(Model model){
+
         cart.getCartItems().clear();
-        if(cart.getCartItems().isEmpty()){
-            model.addAttribute("clear",true);
-        }
-        else {
-            model.addAttribute("clear",false);
-        }
 
         return "redirect:/products";
     }
