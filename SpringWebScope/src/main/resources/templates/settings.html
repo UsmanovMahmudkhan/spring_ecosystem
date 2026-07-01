@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+
+  <style>
+    body.light {
+      background-color: white;
+      color: black;
+    }
+
+    body.dark {
+      background-color: #121212;
+      color: white;
+    }
+
+    select, button {
+      padding: 8px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body th:class="${preferences.theme}">
+
+<h1>Settings</h1>
+
+<form action="/settings" method="post">
+  <p>
+    <label>Theme:</label>
+    <select name="theme">
+      <option value="light" th:selected="${preferences.theme == 'light'}">Light</option>
+      <option value="dark" th:selected="${preferences.theme == 'dark'}">Dark</option>
+    </select>
+  </p>
+
+  <p>
+    <label>Language:</label>
+    <select name="language">
+      <option value="en" th:selected="${preferences.language == 'en'}">English</option>
+      <option value="ko" th:selected="${preferences.language == 'ko'}">Korean</option>
+      <option value="uz" th:selected="${preferences.language == 'uz'}">Uzbek</option>
+    </select>
+  </p>
+
+  <button type="submit">Save</button>
+</form>
+
+<form action="/settings/reset" method="post">
+  <button type="submit">Reset</button>
+</form>
+
+<p>Current theme: <span th:text="${preferences.theme}"></span></p>
+<p>Current language: <span th:text="${preferences.language}"></span></p>
+
+<a href="/home">Go to Home</a>
+
+</body>
+</html>

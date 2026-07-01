@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <style>
+        body.light {
+            background-color: white;
+            color: black;
+        }
+
+        body.dark {
+            background-color: #121212;
+            color: white;
+        }
+    </style>
+</head>
+<body th:class="${preferences.theme}">
+
+<h1>Home Page</h1>
+
+<p>Current theme: <span th:text="${preferences.theme}"></span></p>
+<p>Current language: <span th:text="${preferences.language}"></span></p>
+
+<a href="/settings">Back to Settings</a>
+
+</body>
+</html>
