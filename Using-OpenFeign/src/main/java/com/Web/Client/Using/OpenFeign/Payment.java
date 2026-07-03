@@ -7,6 +7,13 @@ public class Payment {
     private String id;
     private int amount;
 
+    public Payment(String id, int amount) {
+        this.id = id;
+        this.amount = amount;
+    }
+
+    public Payment() {
+    }
 
     public String getId() {
         return id;
