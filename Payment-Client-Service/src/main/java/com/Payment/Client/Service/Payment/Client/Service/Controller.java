@@ -2,10 +2,7 @@ package com.Payment.Client.Service.Payment.Client.Service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -17,9 +14,13 @@ public class Controller {
         this.paymentClientFeign = paymentClientFeign;
     }
 
-    @PostMapping("/api/")
+    @PostMapping("/api/payment")
     public ResponseEntity<Payment>createPayment(@RequestHeader(name = "requestID") String header,@RequestBody PaymentRequest payment){
         return paymentClientFeign.responseEntity(header,payment);
 }
+    @GetMapping("/api/payment/{id}")
+    public ResponseEntity<Payment>getPayment(@PathVariable(name = "id") String id){
+        return paymentClientFeign.getPayment(id);
+    }
 }
 
