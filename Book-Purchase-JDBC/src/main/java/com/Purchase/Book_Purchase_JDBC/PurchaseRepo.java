@@ -1,12 +1,12 @@
 package com.Purchase.Book_Purchase_JDBC;
 
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.rowset.JdbcRowSet;
-import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.logging.Logger;
 
 
 @Repository
@@ -18,21 +18,45 @@ public class PurchaseRepo {
         this.template = template;
     }
 
-    public void addPurchase(String name, BigDecimal price) {
-        String sql = "INSERT INTO purchase (name, price) VALUES (?, ?)";
-        template.update(sql, name, price);
-    }
+    public boolean addPurchase(CreatePurchaseRequest request) {
 
-    public List<PurchaseDTO> rowSet(){
-        String sql="SELECT * FROM purchase";
-        RowMapper<PurchaseDTO>rowMapper=(r,i)->{
-            PurchaseDTO purchaseDTO=new PurchaseDTO();
-            purchaseDTO.setId(r.getInt("id"));
-            purchaseDTO.setName(r.getString("name"));
-            purchaseDTO.setPrice(r.getBigDecimal("price"));
-            return purchaseDTO;
-        };
+        PurchaseDTO purchaseDTO=new PurchaseDTO();
+        purchaseDTO.setName(request.getName());
+        purchaseDTO.setCategory(request.getCategory());
+        purchaseDTO.setPrice(request.getPrice());
+        purchaseDTO.setCreated(LocalTime.now());
+        purchaseDTO.setPaymentMethod(PaymentMethod.CASH);
+        purchaseDTO.setPaymentStatus(PaymentStatus.ACTIVE);
+        String sql = """
+            INSERT INTO purchase (name, category, price, created, payment, status)
+            VALUES (?, ?, ?, ?, ?, ?)
+            """;
 
-        return template.query(sql,rowMapper);
+        try {
+            template.update(
+                    sql,
+                    purchaseDTO.getName(),
+                    purchaseDTO.getCategory(),
+                    purchaseDTO.getPrice(),
+                    purchaseDTO.getCreated(),
+                    purchaseDTO.getPaymentMethod().name(),
+                    purchaseDTO.getPaymentStatus().name()
+            );
+
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(PurchaseRepo.class.getName()).severe(e.getMessage());
+            return false;
+        }
     }
 }
+
+
+
+//?\id
+//name
+//category
+//price
+//created date
+//payment method
+//status

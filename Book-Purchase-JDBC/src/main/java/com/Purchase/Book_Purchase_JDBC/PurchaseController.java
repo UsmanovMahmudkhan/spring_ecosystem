@@ -1,26 +1,31 @@
 package com.Purchase.Book_Purchase_JDBC;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
 public class PurchaseController {
 
-    private  PurchaseRepo purchaseRepo;
+    private PurchaseRepo purchaseRepo;
 
     public PurchaseController(PurchaseRepo purchaseRepo) {
         this.purchaseRepo = purchaseRepo;
     }
 
     @PostMapping("/post")
-    public void addPurchaseDTO(@RequestParam String product, @RequestParam BigDecimal price){
-        purchaseRepo.addPurchase(product,price);
-    }
+    public ResponseEntity<Boolean>add(@RequestBody CreatePurchaseRequest product){
 
-    @GetMapping("/all")
-    public List<PurchaseDTO>getALL(){
-        return purchaseRepo.rowSet();
+        var isADDED=purchaseRepo.addPurchase(product);
+
+            return ResponseEntity.status(HttpStatus.ACCEPTED)
+                    .body(isADDED);
+
+
+
     }
 }
