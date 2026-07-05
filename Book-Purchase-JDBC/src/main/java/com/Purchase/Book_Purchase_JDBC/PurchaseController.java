@@ -28,4 +28,13 @@ public class PurchaseController {
 
 
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<PurchaseDTO>>getAll(){
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .header("service","this is coming from purchase server")
+                .body(purchaseRepo.allPurchase());
+    }
+
 }

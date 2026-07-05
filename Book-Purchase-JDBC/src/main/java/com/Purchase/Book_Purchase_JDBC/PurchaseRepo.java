@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -48,6 +49,26 @@ public class PurchaseRepo {
             Logger.getLogger(PurchaseRepo.class.getName()).severe(e.getMessage());
             return false;
         }
+    }
+
+
+    public List<PurchaseDTO>allPurchase(){
+        String sql="SELECT * FROM purchase";
+
+        RowMapper<PurchaseDTO>rowMapper=(r,i)->{
+            PurchaseDTO purchase=new PurchaseDTO();
+            purchase.setId(r.getInt("id"));
+            purchase.setName(r.getString("name"));
+            purchase.setCategory(r.getString("category"));
+            purchase.setPrice(r.getBigDecimal("price"));
+            purchase.setCreated(r.getTime("created").toLocalTime());
+            purchase.setPaymentMethod(PaymentMethod.valueOf(r.getString("payment")));
+            purchase.setPaymentStatus(PaymentStatus.valueOf(r.getString("status")));
+
+            return purchase;
+        };
+
+        return template.query(sql,rowMapper);
     }
 }
 
