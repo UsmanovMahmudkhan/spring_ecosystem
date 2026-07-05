@@ -22,5 +22,10 @@ public class Controller {
     public ResponseEntity<Payment>getPayment(@PathVariable(name = "id") String id){
         return paymentClientFeign.getPayment(id);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<Payment>getSearchPayment(@RequestParam int min, @RequestParam int max){
+        return paymentClientFeign.getSearch(min, max);
+    }
 }
 

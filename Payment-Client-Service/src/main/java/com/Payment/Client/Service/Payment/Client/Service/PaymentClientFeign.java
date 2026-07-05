@@ -13,4 +13,7 @@ public interface PaymentClientFeign {
 
     @GetMapping("/payment/{id}")
     public ResponseEntity<Payment>getPayment(@PathVariable(name = "id")String id);
+
+    @GetMapping("/payments/search")
+    public ResponseEntity<Payment>getSearch(@RequestParam int min,@RequestParam int max);
 }
