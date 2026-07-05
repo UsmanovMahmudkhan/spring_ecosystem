@@ -4,7 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
 public class Controller {
@@ -24,7 +26,7 @@ public class Controller {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Payment>getSearchPayment(@RequestParam int min, @RequestParam int max){
+    public ResponseEntity<List<Payment>>getSearchPayment(@RequestParam int min, @RequestParam int max){
         return paymentClientFeign.getSearch(min, max);
     }
 }

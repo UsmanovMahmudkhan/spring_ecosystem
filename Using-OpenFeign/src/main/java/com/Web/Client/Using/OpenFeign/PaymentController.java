@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -47,9 +48,9 @@ public class PaymentController {
 
 
 
-    @GetMapping("/payments/search")
-    public ResponseEntity<ArrayList<Payment>>getPayment(@RequestParam int min,
-                                                        @RequestParam int max){
+    @GetMapping("/payment/search")
+    public ResponseEntity<List<Payment>>getPayment(@RequestParam int min,
+                                                   @RequestParam int max){
         ArrayList<Payment>paramList=new ArrayList<>();
 
         for(Payment payment:arrayList){
@@ -58,10 +59,13 @@ public class PaymentController {
             }
         }
 
-        return ResponseEntity.
-                status(HttpStatus.FOUND)
-                .header("status","this is from payment service class"+PaymentController.class.getName())
-                .body(paramList);
+        return ResponseEntity
+
+                .ok()
+
+                .header("status", "this is from payment service class " + PaymentController.class.getName())
+
+                .body(paramList.stream().toList());
 
 
     }
