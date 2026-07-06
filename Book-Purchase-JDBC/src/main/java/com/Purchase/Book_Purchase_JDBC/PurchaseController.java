@@ -53,4 +53,13 @@ public class PurchaseController {
 
     }
 
+
+    //GET	/purchases/search/price
+    @GetMapping("/purchases/search/price")
+    public ResponseEntity<List<PurchaseDTO>>getAllBasedOnPrice(@RequestParam(name = "price") BigDecimal price){
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .body(purchaseRepo.getPriceBasedPurchases(price));
+    }
+
 }

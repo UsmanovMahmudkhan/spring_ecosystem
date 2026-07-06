@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.logging.Logger;
@@ -90,11 +91,14 @@ public class PurchaseRepo {
         return template.query(sql,rowMapper,id);
 
     }
+
+
+    //GET	/purchases/search/price
+    public List<PurchaseDTO>getPriceBasedPurchases(BigDecimal price){
+        String sql="SELECT * FROM purchase where price=?";
+        return template.query(sql,new PurchaseMapper(),price);
+    }
 }
-
-
-
-//Search Purchases By Price Range
 
 //?\id
 //name
