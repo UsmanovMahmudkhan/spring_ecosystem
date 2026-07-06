@@ -37,4 +37,20 @@ public class PurchaseController {
                 .body(purchaseRepo.allPurchase());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<List<PurchaseDTO>>getById(@PathVariable int id){
+        if(!purchaseRepo.getPurchaseByID(id).isEmpty()){
+            return ResponseEntity
+                    .status(HttpStatus.FOUND)
+                    .body(purchaseRepo.getPurchaseByID(id));
+        }
+        else {
+            return
+                    ResponseEntity
+                            .status(HttpStatus.NO_CONTENT)
+                            .body(null);
+        }
+
+    }
+
 }

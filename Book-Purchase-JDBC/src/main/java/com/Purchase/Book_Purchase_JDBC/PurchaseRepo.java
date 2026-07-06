@@ -70,9 +70,31 @@ public class PurchaseRepo {
 
         return template.query(sql,rowMapper);
     }
+
+    public List<PurchaseDTO> getPurchaseByID(int id){
+        String sql="SELECT * FROM purchase WHERE id=?";
+        RowMapper<PurchaseDTO>rowMapper=(r,i)->
+        {
+            PurchaseDTO purchase=new PurchaseDTO();
+            purchase.setId(r.getInt("id"));
+            purchase.setName(r.getString("name"));
+            purchase.setCategory(r.getString("category"));
+            purchase.setPrice(r.getBigDecimal("price"));
+            purchase.setCreated(r.getTime("created").toLocalTime());
+            purchase.setPaymentMethod(PaymentMethod.valueOf(r.getString("payment")));
+            purchase.setPaymentStatus(PaymentStatus.valueOf(r.getString("status")));
+
+            return purchase;
+        };
+
+        return template.query(sql,rowMapper,id);
+
+    }
 }
 
 
+
+//Search Purchases By Price Range
 
 //?\id
 //name
