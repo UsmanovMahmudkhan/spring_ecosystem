@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### macOS ###
 .DS_Store
 **/.DS_Store
@@ -9,6 +10,14 @@ target/
 !**/src/test/**/target/
 
 ### STS ###
+=======
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+>>>>>>> fd9f00c (used row jdbc connection)
 .apt_generated
 .classpath
 .factorypath
@@ -16,12 +25,18 @@ target/
 .settings
 .springBeans
 .sts4-cache
+<<<<<<< HEAD
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+=======
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+>>>>>>> fd9f00c (used row jdbc connection)
 
 ### NetBeans ###
 /nbproject/private/
@@ -29,9 +44,18 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
+<<<<<<< HEAD
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
+=======
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+>>>>>>> fd9f00c (used row jdbc connection)
