@@ -1,42 +1,36 @@
-<<<<<<< HEAD
 ### macOS ###
 .DS_Store
-**/.DS_Store
 
-HELP.md
+### Java / Maven / Gradle ###
+*.class
 target/
+build/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### STS ###
-=======
 ### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
-### Eclipse ###
->>>>>>> fd9f00c (used row jdbc connection)
+### Eclipse / Spring Tool Suite ###
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
-.sts4-cache
-<<<<<<< HEAD
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-=======
+.sts4-cache/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
->>>>>>> fd9f00c (used row jdbc connection)
 
 ### NetBeans ###
 /nbproject/private/
@@ -44,18 +38,14 @@ bin/
 /dist/
 /nbdist/
 /.nb-gradle/
-<<<<<<< HEAD
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-=======
 
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
-.DS_Store
->>>>>>> fd9f00c (used row jdbc connection)
+### Local secrets ###
+.env
+.env.*
+!.env.example
+
+### Generated Spring documentation ###
+HELP.md
