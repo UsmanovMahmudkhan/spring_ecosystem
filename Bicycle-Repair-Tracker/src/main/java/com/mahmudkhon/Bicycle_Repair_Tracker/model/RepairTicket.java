@@ -1,5 +1,6 @@
 package com.mahmudkhon.Bicycle_Repair_Tracker.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,6 +40,7 @@ public class RepairTicket {
     @Column(name = "openedAt", nullable = false,updatable = false)
     private LocalDateTime openedAt;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "expectedFinishDate")
     private LocalDate expectedFinishDate;
 
@@ -54,7 +56,23 @@ public class RepairTicket {
     @Column(name = "createdByBranch",updatable = false)
     private String createdByBranch;
 
-    public RepairTicket(String problem_title) {
+    public RepairTicket(String problem_title,
+                        String description,
+                        BigDecimal laborCost,
+                        Boolean urgent,
+                        LocalDate expectedFinishDate,
+                        String customerMessage,
+                        Byte photo,
+                        Long referenceNumber,
+                        String createdByBranch) {
         this.problem_title = problem_title;
+        this.description = description;
+        this.laborCost = laborCost;
+        this.urgent = urgent;
+        this.expectedFinishDate = expectedFinishDate;
+        this.customerMessage = customerMessage;
+        this.photo = photo;
+        this.referenceNumber = referenceNumber;
+        this.createdByBranch = createdByBranch;
     }
 }

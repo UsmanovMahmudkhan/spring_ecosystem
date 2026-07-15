@@ -21,7 +21,10 @@ public class Controller {
     @PostMapping("/add/request")
     public boolean add(@RequestBody TicketRequest request){
         //Saves it through the repository.
-        ticketRepo.save(new RepairTicket(request.getTitle()));
+        ticketRepo.save(new RepairTicket(request.getProblem_title(), request.getDescription()
+               ,request.getLaborCost(),request.getUrgent(),
+                request.getExpectedFinishDate(),request.getCustomerMessage(),
+                request.getPhoto(),request.getReferenceNumber(),request.getCreatedByBranch()));
         return true;
     }
 
