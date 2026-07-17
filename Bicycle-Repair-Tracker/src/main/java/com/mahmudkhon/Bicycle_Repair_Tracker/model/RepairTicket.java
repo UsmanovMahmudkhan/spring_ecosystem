@@ -8,8 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.UUID;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -56,6 +55,20 @@ public class RepairTicket {
     @Column(name = "createdByBranch",updatable = false)
     private String createdByBranch;
 
+    @Column(name = "status",nullable = false)
+    @Enumerated(EnumType.STRING)
+//    @EnumeratedValue
+    private TicketStatus status;
+
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToOne
+    @JoinColumn(name = "assigned_id")
+    private Mechanic assignedMechanic;
+
     public RepairTicket(String problem_title,
                         String description,
                         BigDecimal laborCost,
@@ -64,7 +77,10 @@ public class RepairTicket {
                         String customerMessage,
                         Byte photo,
                         Long referenceNumber,
-                        String createdByBranch) {
+                        String createdByBranch,
+                        TicketStatus status
+
+    ) {
         this.problem_title = problem_title;
         this.description = description;
         this.laborCost = laborCost;
@@ -74,5 +90,9 @@ public class RepairTicket {
         this.photo = photo;
         this.referenceNumber = referenceNumber;
         this.createdByBranch = createdByBranch;
+        this.status=status;
+
+
     }
+
 }

@@ -1,10 +1,13 @@
 package com.mahmudkhon.Bicycle_Repair_Tracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,6 +28,12 @@ public class Customer {
     @Column(name = "email",unique = true,nullable = false,length = 40)
     private String email;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    private List<RepairTicket> repairTicket;
 
-
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 }

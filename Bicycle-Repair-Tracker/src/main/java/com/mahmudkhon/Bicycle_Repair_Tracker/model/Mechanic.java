@@ -20,7 +20,10 @@ public class Mechanic {
     @Column(name = "name",length = 40,nullable = false)
     private String name;
 
-    @Column(name = "professioin",nullable = false,length = 40)
+    @Column(name = "profession",nullable = false,length = 40)
     private String profession;
+
+    @OneToOne(mappedBy = "assignedMechanic")
+    private RepairTicket ticket;
 
 }
