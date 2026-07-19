@@ -13,7 +13,7 @@ import java.time.Instant;
 @ToString
 public class InventoryItemResponse {
     private Long id;
-    private String stock_unit;
+    private String stockUnit;
     private String productName;
     private Integer quantity;
     private Integer reorderLevel;

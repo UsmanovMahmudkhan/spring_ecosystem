@@ -16,8 +16,8 @@ import java.math.BigDecimal;
 @Table(name = "inventory")
 public class InventoryItem extends BaseEntity{
 
-    @Column(name = "stock_unit",nullable = false,length = 40, unique = true)
-    private String stock_unit;
+    @Column(name = "stock_unit",length = 40, unique = true)
+    private String stockUnit;
 
     @Column(name = "name",nullable = false,length = 20)
     private String productName;

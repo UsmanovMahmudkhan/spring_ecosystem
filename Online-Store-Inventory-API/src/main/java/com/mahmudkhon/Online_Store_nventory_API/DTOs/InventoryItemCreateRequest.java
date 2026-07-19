@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @ToString
 public class InventoryItemCreateRequest {
-    private String stock_unit;
+    private String stockUnit;
     private String productName;
     private Integer quantity;
     private Integer reorderLevel;
