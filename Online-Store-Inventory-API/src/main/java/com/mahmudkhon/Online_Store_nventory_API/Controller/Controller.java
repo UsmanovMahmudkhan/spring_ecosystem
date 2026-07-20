@@ -35,6 +35,29 @@ public class Controller {
                 .body(inventoryItemService.findAll());
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<InventoryItemResponse>getByID(@PathVariable Long id){
+        return ResponseEntity.ok(inventoryItemService.findById(id));
+    }
+
+    @GetMapping("sku/{sku}")
+    public ResponseEntity<InventoryItemResponse>getBySku(@PathVariable String sku){
+        return ResponseEntity.ok(inventoryItemService.findBySku(sku));
+    }
+
+    @GetMapping("/active")
+    public ResponseEntity<List<InventoryItemResponse>>getByActive(){
+        return ResponseEntity.ok(inventoryItemService.findByActive());
+    }
+
+
+    @GetMapping("/low-stock}")
+    public List<InventoryItemResponse>getByLowStock(@RequestParam Long id,
+                                                    @RequestParam Integer value){
+        inventoryItemService.
+
+    }
+
 
 
 }

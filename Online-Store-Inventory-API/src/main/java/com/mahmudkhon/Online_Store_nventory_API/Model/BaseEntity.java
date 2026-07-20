@@ -3,6 +3,7 @@ package com.mahmudkhon.Online_Store_nventory_API.Model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -22,6 +23,7 @@ public abstract class BaseEntity {
     private Instant createAt;
 
     @Column(name = "updateAt")
+    @UpdateTimestamp
     private Instant updateAt;
 
 }

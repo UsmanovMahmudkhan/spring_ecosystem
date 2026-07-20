@@ -16,15 +16,15 @@ import java.util.Optional;
 public interface InventoryMapper {
 
     //InventoryItemCreateRequest → InventoryItem
-
-    //@Mapping(source = "stock_unit", target = "stockUnit")
     InventoryItem create_item(InventoryItemCreateRequest request);
 
 
     //InventoryItem → InventoryItemResponse
+    @Mapping(source = "isActive", target = "active")
+    @Mapping(source = "createAt", target = "createdAt")
+    @Mapping(source = "updateAt", target = "updatedAt")
     InventoryItemResponse response(InventoryItem item);
 
-    InventoryItemResponse responseForOptional(Optional<InventoryItem>inventoryItem);
 
     //StorageLocationRequest → StorageLocation
     StorageLocation createStorageLocation(StorageLocationRequest request);
@@ -33,6 +33,9 @@ public interface InventoryMapper {
     //StorageLocation → StorageLocationResponse
     StorageLocationResponse responseOfStorageLocation(StorageLocation location);
 
+    @Mapping(source = "isActive", target = "active")
+    @Mapping(source = "createAt", target = "createdAt")
+    @Mapping(source = "updateAt", target = "updatedAt")
     List<InventoryItemResponse> response(List<InventoryItem> all);
     //InventoryItemUpdateRequest + InventoryItem → updated InventoryItem
 }

@@ -10,6 +10,7 @@ import lombok.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Getter
@@ -33,14 +34,14 @@ public class InventoryItemService {
         }
 
         InventoryItem item = mapper.create_item(request);
-
         InventoryItem savedItem = repository.save(item);
         return mapper.response(savedItem);
     }
 
     public InventoryItemResponse findById(Long id){
-        var item=repository.findById(id);
-        var response=mapper.responseForOptional(item);
+        Optional<InventoryItem> item=repository.findById(id);
+        var inventItem=item.get();
+        InventoryItemResponse response=mapper.response(inventItem);
 
         return response;
     }
@@ -57,8 +58,8 @@ public class InventoryItemService {
         return mapper.response(repository.findAll());
     }
 
-    public InventoryItemResponse findByActive(){
-        return (InventoryItemResponse) mapper.response(repository.findByIsActiveTrue());
+    public List<InventoryItemResponse> findByActive(){
+        return mapper.response(repository.findByIsActiveTrue());
     }
 
 //    public InventoryItemResponse addStock(Long id,Integer value){
