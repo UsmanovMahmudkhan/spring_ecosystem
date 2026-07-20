@@ -51,12 +51,7 @@ public class Controller {
     }
 
 
-    @GetMapping("/low-stock}")
-    public List<InventoryItemResponse>getByLowStock(@RequestParam Long id,
-                                                    @RequestParam Integer value){
-        inventoryItemService.
 
-    }
 
 
 
