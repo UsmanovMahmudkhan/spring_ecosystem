@@ -2,6 +2,7 @@ package com.mahmudkhon.Online_Store_nventory_API.Controller;
 
 import com.mahmudkhon.Online_Store_nventory_API.DTOs.InventoryItemCreateRequest;
 import com.mahmudkhon.Online_Store_nventory_API.DTOs.InventoryItemResponse;
+import com.mahmudkhon.Online_Store_nventory_API.DTOs.InventoryItemUpdateRequest;
 import com.mahmudkhon.Online_Store_nventory_API.Service.InventoryItemService;
 
 import org.springframework.http.HttpStatus;
@@ -50,6 +51,11 @@ public class Controller {
         return ResponseEntity.ok(inventoryItemService.findByActive());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<InventoryItemResponse>update(@PathVariable Long id,
+                                                       @RequestBody InventoryItemUpdateRequest request){
+        return ResponseEntity.accepted().body(inventoryItemService.update(id,request));
+    }
 
 
 

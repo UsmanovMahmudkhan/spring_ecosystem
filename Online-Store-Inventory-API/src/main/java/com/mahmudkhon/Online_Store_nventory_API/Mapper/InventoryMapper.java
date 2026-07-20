@@ -1,13 +1,9 @@
 package com.mahmudkhon.Online_Store_nventory_API.Mapper;
 
-import com.mahmudkhon.Online_Store_nventory_API.DTOs.InventoryItemCreateRequest;
-import com.mahmudkhon.Online_Store_nventory_API.DTOs.InventoryItemResponse;
-import com.mahmudkhon.Online_Store_nventory_API.DTOs.StorageLocationRequest;
-import com.mahmudkhon.Online_Store_nventory_API.DTOs.StorageLocationResponse;
+import com.mahmudkhon.Online_Store_nventory_API.DTOs.*;
 import com.mahmudkhon.Online_Store_nventory_API.Model.InventoryItem;
 import com.mahmudkhon.Online_Store_nventory_API.Model.StorageLocation;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +34,20 @@ public interface InventoryMapper {
     @Mapping(source = "updateAt", target = "updatedAt")
     List<InventoryItemResponse> response(List<InventoryItem> all);
     //InventoryItemUpdateRequest + InventoryItem → updated InventoryItem
+
+    @BeanMapping(
+            nullValuePropertyMappingStrategy =
+                    NullValuePropertyMappingStrategy.IGNORE
+    )
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "stockUnit", ignore = true)
+    @Mapping(target = "createAt", ignore = true)
+    @Mapping(target = "updateAt", ignore = true)
+    void update(
+            InventoryItemUpdateRequest request,
+            @MappingTarget InventoryItem item
+    );
+
 }
+
 
