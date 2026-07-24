@@ -1,6 +1,7 @@
 package com.mahmudkhon.Spring_Data_Transaction.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,11 @@ public class Member {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     @Size(max = 40)
     private String name;
 
-   // @Email
+    @Email
     @Column(name = "email",unique = true)
     private String email;
 

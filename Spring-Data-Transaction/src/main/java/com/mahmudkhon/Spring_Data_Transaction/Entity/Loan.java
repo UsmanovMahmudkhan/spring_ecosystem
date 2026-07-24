@@ -1,10 +1,12 @@
 package com.mahmudkhon.Spring_Data_Transaction.Entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDate;
 
@@ -19,21 +21,19 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
 
     @CreationTimestamp
     private LocalDate date;
 
-    private LocalDate dueOn;
+    private LocalDate dueDateTime = LocalDate.now().plusWeeks(2);
 
-    private LocalDate returnOn;
-
+    private LocalDate returnTime;
 
 }

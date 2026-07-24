@@ -1,5 +1,6 @@
 package com.mahmudkhon.Spring_Data_Transaction.Entity;
 
+import com.mahmudkhon.Spring_Data_Transaction.Exception.NotEnoughAvailable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +32,16 @@ public class Book {
     private Integer availableCopies;
 
 
+    public Integer borrow() throws NotEnoughAvailable {
+        if (availableCopies>0){
+             return availableCopies-=1;
+        }
+        else {
+            throw new NotEnoughAvailable("Not enough book available");
+        }
+    }
 
-
-
+    public Integer returnBook(){
+        return totalCopies+=1;
+    }
 }
