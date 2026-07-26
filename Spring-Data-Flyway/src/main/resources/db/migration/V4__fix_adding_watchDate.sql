@@ -1,0 +1,1 @@
+alter table movie add column watch_date datetime;

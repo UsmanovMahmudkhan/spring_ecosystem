@@ -1,0 +1,4 @@
+ALTER TABLE movie
+ADD column status VARCHAR(20) NOT NULL DEFAULT 'PLANNED',
+ADD CONSTRAINT chk_orders_status
+CHECK (status IN ('WATCHING', 'WATCHED', 'DROPPED','PLANNED'));
