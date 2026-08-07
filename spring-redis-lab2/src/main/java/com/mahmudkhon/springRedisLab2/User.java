@@ -14,4 +14,5 @@ import java.util.UUID;
 public class User {
     private UUID uuid=UUID.randomUUID();
     private String name;
+    private Integer age;
 }

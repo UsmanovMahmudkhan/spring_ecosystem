@@ -10,5 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRequest {
-    String name;
+    private String name;
+    private Integer age;
 }
