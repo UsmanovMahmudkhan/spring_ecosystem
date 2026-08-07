@@ -1,0 +1,1 @@
+ALTER TABLE profile RENAME COLUMN updatedAt TO updated_at;
