@@ -22,7 +22,7 @@ public class Profile {
     @Column(name = "id",unique = true)
     private Integer id;
 
-    @Column(name = "name",nullable = false,length = 30)
+    @Column(name = "name",length = 30)
     private String name;
 
     @Column(name = "city",nullable = true, updatable = true,length = 40)

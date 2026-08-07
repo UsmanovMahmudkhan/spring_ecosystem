@@ -1,5 +1,6 @@
 package com.example.ProfileCacheAPI.Controller;
 
+import com.example.ProfileCacheAPI.DTOs.ProfileNameRequest;
 import com.example.ProfileCacheAPI.DTOs.ProfileRequest;
 import com.example.ProfileCacheAPI.DTOs.ProfileResponse;
 import com.example.ProfileCacheAPI.Exceptions.ProfileNotFoundException;
@@ -30,5 +31,12 @@ public class ProfileContoller {
         return ResponseEntity
                 .status(HttpStatus.FOUND)
                 .body(service.getById(id));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ProfileResponse>update(@PathVariable Integer id, @RequestBody ProfileNameRequest request) throws ProfileNotFoundException {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(service.updateName(id,request));
     }
 }

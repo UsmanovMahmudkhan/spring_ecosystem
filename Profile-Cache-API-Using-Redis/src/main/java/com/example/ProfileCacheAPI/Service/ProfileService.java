@@ -1,10 +1,14 @@
 package com.example.ProfileCacheAPI.Service;
 
+import com.example.ProfileCacheAPI.DTOs.ProfileNameRequest;
 import com.example.ProfileCacheAPI.DTOs.ProfileRequest;
 import com.example.ProfileCacheAPI.DTOs.ProfileResponse;
+import com.example.ProfileCacheAPI.Entity.Profile;
 import com.example.ProfileCacheAPI.Exceptions.ProfileNotFoundException;
 import com.example.ProfileCacheAPI.Mapper.ProfileMapper;
 import com.example.ProfileCacheAPI.Repository.ProfileRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +40,22 @@ public class ProfileService {
         var response=profileMapper.response(profile.get());
 
         return response;
+    }
+
+    @CacheEvict(cacheNames = "profileId",key = "#id")
+    public ProfileResponse updateName(Integer id, ProfileNameRequest request) throws ProfileNotFoundException {
+
+        Profile profile=repository.findById(id).orElseThrow(ProfileNotFoundException::new);
+
+
+        if (request.getName() != null && !request.getName().isBlank()) {
+
+            profile.setName(request.getName());
+
+        };
+
+        repository.save(profile);
+
+        return profileMapper.response(profile);
     }
 }
