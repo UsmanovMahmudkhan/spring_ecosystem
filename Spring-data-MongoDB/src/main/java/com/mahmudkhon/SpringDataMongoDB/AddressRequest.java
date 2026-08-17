@@ -1,0 +1,15 @@
+package com.mahmudkhon.SpringDataMongoDB;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddressRequest {
+    private String id;
+}

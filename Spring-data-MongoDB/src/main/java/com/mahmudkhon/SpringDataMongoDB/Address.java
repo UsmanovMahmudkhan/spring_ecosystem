@@ -5,22 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collation = "product")
-public class Entity {
-
+@Document
+public class Address {
     @Id
     private String id;
     private String name;
-    private String description;
-
-    @DBRef
-    private Address address;
 }

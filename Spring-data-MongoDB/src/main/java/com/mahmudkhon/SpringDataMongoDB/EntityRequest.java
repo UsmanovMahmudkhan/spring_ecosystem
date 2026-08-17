@@ -12,4 +12,5 @@ import org.springframework.stereotype.Service;
 public class EntityRequest {
     private String name;
     private String description;
+    private String requestAddressID;
 }
