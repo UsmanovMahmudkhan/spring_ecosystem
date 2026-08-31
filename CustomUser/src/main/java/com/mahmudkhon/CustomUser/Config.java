@@ -18,7 +18,7 @@ public class Config {
 
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsService(){
+    public UserDetailsService userDetailsService(){
       var user= User.withUsername("khan")
                     .password("mahmud")
                     .build();
