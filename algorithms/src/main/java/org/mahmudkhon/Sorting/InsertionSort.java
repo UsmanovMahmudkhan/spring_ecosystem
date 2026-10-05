@@ -19,7 +19,6 @@ public class InsertionSort {
             }
 
             arr[left+1]=key;
-
         }
 
         for(int i:arr){
